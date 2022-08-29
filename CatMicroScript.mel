@@ -1,27 +1,16 @@
 // Create Body
-polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
-move -relative 0 2 0 ;
+polySphere -radius 1.5 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 3 0 ;
 scale -relative 2 1 1 ;
-
-
-select -r pSphere1.vtx[47:51] pSphere1.vtx[66:72] pSphere1.vtx[86:92] pSphere1.vtx[106:112] pSphere1.vtx[126:132] pSphere1.vtx[146:152] pSphere1.vtx[166:172] pSphere1.vtx[186:192] pSphere1.vtx[206:212] pSphere1.vtx[226:232] pSphere1.vtx[246:252] pSphere1.vtx[266:272] pSphere1.vtx[286:292] pSphere1.vtx[306:312] pSphere1.vtx[327:331] ;
-move -r -0.543995 0 0 ;
-
-select -r pSphere1.vtx[80] pSphere1.vtx[99:101] pSphere1.vtx[117:121] pSphere1.vtx[137:141] pSphere1.vtx[156:162] pSphere1.vtx[176:182] pSphere1.vtx[196:202] pSphere1.vtx[216:222] pSphere1.vtx[236:241] pSphere1.vtx[256:261] pSphere1.vtx[277:281] pSphere1.vtx[297:300] pSphere1.vtx[318:319] ;
-
-select -r pSphere1.vtx[78:81] pSphere1.vtx[97:101] pSphere1.vtx[117:121] pSphere1.vtx[137:142] pSphere1.vtx[156:162] pSphere1.vtx[176:182] pSphere1.vtx[196:202] pSphere1.vtx[216:222] pSphere1.vtx[236:241] pSphere1.vtx[256:261] pSphere1.vtx[277:281] pSphere1.vtx[297:300] pSphere1.vtx[318:319] ;
-move -r 0 0.194119 0 ;
-move -r -0.179208 0 0 ;
 
 // Create Neck
 
 polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+
 move -r 0 3.046441 0 ;
 move -r 1.228167 0 0 ;
 scale -r 0.421799 0.421799 0.421799 ;
 rotate -r -ws -fo 6.82876 -4.222533 -27.491766 ;
-
-
 
 // Create Head
 polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
@@ -51,7 +40,36 @@ move -r 0 -0.0209852 0 ;
 
 
 // Create back legs
-
-
+polySphere -r .5 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+move -r 0 2.175157 0 ;
+move -r -1.831247 0 0 ;
+scale -r 0.743495 0.743495 0.743495 ;
+move -r 0 0 0.51548 ;
+select -cl  ;
+select -r pSphere3 ;
+select -cl  ;
+select -r pSphere2 ;
+select -addFirst polySphere2 ;
+select -cl  ;
+select -r pSphere1 ;
+select -addFirst polySphere1 ;
+select -cl  ;
+select -r pSphere2 ;
+select -r pSphere2 ;
+select -r pCylinder1 ;
+select -addFirst polyCylinder1 ;
 
 // Create front legs
+polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1
+move -r 0 1.289449 0 ;
+move -r 0.76088 0 0 ;
+scale -r 0.239422 0.239422 0.239422 ;
+move -r 0.482116 0 0 ;
+select -cl  ;
+select -r pCylinder2 ;
+move -r 0 0 0.364445 ;
+move -r -0.0393114 0 0 ;
+rotate -r -os -fo 0 0 13.695712 ;
+scale -r 1 3.255642 1 ;
+move -r 0 -0.185119 0 ;
+move -r 0 0 -0.128901 ;
