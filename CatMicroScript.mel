@@ -1,0 +1,57 @@
+// Create Body
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 2 0 ;
+scale -relative 2 1 1 ;
+
+
+select -r pSphere1.vtx[47:51] pSphere1.vtx[66:72] pSphere1.vtx[86:92] pSphere1.vtx[106:112] pSphere1.vtx[126:132] pSphere1.vtx[146:152] pSphere1.vtx[166:172] pSphere1.vtx[186:192] pSphere1.vtx[206:212] pSphere1.vtx[226:232] pSphere1.vtx[246:252] pSphere1.vtx[266:272] pSphere1.vtx[286:292] pSphere1.vtx[306:312] pSphere1.vtx[327:331] ;
+move -r -0.543995 0 0 ;
+
+select -r pSphere1.vtx[80] pSphere1.vtx[99:101] pSphere1.vtx[117:121] pSphere1.vtx[137:141] pSphere1.vtx[156:162] pSphere1.vtx[176:182] pSphere1.vtx[196:202] pSphere1.vtx[216:222] pSphere1.vtx[236:241] pSphere1.vtx[256:261] pSphere1.vtx[277:281] pSphere1.vtx[297:300] pSphere1.vtx[318:319] ;
+
+select -r pSphere1.vtx[78:81] pSphere1.vtx[97:101] pSphere1.vtx[117:121] pSphere1.vtx[137:142] pSphere1.vtx[156:162] pSphere1.vtx[176:182] pSphere1.vtx[196:202] pSphere1.vtx[216:222] pSphere1.vtx[236:241] pSphere1.vtx[256:261] pSphere1.vtx[277:281] pSphere1.vtx[297:300] pSphere1.vtx[318:319] ;
+move -r 0 0.194119 0 ;
+move -r -0.179208 0 0 ;
+
+// Create Neck
+
+polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r 0 3.046441 0 ;
+move -r 1.228167 0 0 ;
+scale -r 0.421799 0.421799 0.421799 ;
+rotate -r -ws -fo 6.82876 -4.222533 -27.491766 ;
+
+
+
+// Create Head
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+move -r 0 4.338334 0 ;
+move -r 1.727017 0 0 ;
+move -r 0 -1 ;
+scale -r 0.834737 0.834737 0.834737 ;
+scale -r 0.953684 0.953684 0.953684 ;
+
+// Create ears
+polyCone -r 1 -h 2 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r 0 4.82779 0 ;
+scale -r 0.472064 0.472064 0.472064 ;
+scale -r 0.860743 0.860743 0.860743 ;
+move -r 1.80336 0 0 ;
+move -r 0 -0.380663 0 ;
+move -r 0 0 0.536589 ;
+select -cl  ;
+select -r pCone1 ;
+rotate -r -os -fo 29.599536 0 0 ;
+move -r 0 0 0.119781 ;
+move -r 0 -0.26835 0 ;
+scale -r 0.690508 0.690508 0.690508 ;
+move -r 0 -0.090815 0 ;
+rotate -r -os -fo 12.059394 0 0 ;
+move -r 0 -0.0209852 0 ;
+
+
+// Create back legs
+
+
+
+// Create front legs
