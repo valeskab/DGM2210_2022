@@ -1,75 +1,38 @@
+//Since this is my first time ever seeing MEL, I found this assignment a little confusing at first.
+//I tried my best to redo the assignment, hence why this version is different than my initial submission
+
 // Create Body
-polySphere -radius 1.5 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+polySphere -radius 1.5 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1 -name "Body";
 move -relative 0 3 0 ;
 scale -relative 2 1 1 ;
 
 // Create Neck
 
-polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
-
-move -r 0 3.046441 0 ;
-move -r 1.228167 0 0 ;
-scale -r 0.421799 0.421799 0.421799 ;
-rotate -r -ws -fo 6.82876 -4.222533 -27.491766 ;
+polyCylinder -radius 1 -h 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -rcp 0 -createUVs 3 -constructionHistory 1 -name "Neck";
+move -relative 2.5 4 0 ;
+scale -relative 0.6 0.6 0.6 ;
+rotate -relative -ws -fo 6.82876 -4.222533 -27.491766 ;
 
 // Create Head
 polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
-move -r 0 4.338334 0 ;
-move -r 1.727017 0 0 ;
-move -r 0 -1 ;
-scale -r 0.834737 0.834737 0.834737 ;
-scale -r 0.953684 0.953684 0.953684 ;
-
-// Create ears
-polyCone -r 1 -h 2 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
-move -r 0 4.82779 0 ;
-scale -r 0.472064 0.472064 0.472064 ;
-scale -r 0.860743 0.860743 0.860743 ;
-move -r 1.80336 0 0 ;
-move -r 0 -0.380663 0 ;
-move -r 0 0 0.536589 ;
-select -cl  ;
-select -r pCone1 ;
-rotate -r -os -fo 29.599536 0 0 ;
-move -r 0 0 0.119781 ;
-move -r 0 -0.26835 0 ;
-scale -r 0.690508 0.690508 0.690508 ;
-move -r 0 -0.090815 0 ;
-rotate -r -os -fo 12.059394 0 0 ;
-move -r 0 -0.0209852 0 ;
-
+move -relative 3 5 0 ;
+scale -r 1.186 1.186 1.186 ;
 
 // Create back legs
-polySphere -r .5 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
-move -r 0 2.175157 0 ;
-move -r -1.831247 0 0 ;
-scale -r 0.743495 0.743495 0.743495 ;
-move -r 0 0 0.51548 ;
-select -cl  ;
-select -r pSphere3 ;
-select -cl  ;
-select -r pSphere2 ;
-select -addFirst polySphere2 ;
-select -cl  ;
-select -r pSphere1 ;
-select -addFirst polySphere1 ;
-select -cl  ;
-select -r pSphere2 ;
-select -r pSphere2 ;
-select -r pCylinder1 ;
-select -addFirst polyCylinder1 ;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+move -r -1.831 2.541 0.735 ;
+scale -r 1.017 1.017 0.666 ;
 
 // Create front legs
-polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1
-move -r 0 1.289449 0 ;
-move -r 0.76088 0 0 ;
-scale -r 0.239422 0.239422 0.239422 ;
-move -r 0.482116 0 0 ;
-select -cl  ;
-select -r pCylinder2 ;
-move -r 0 0 0.364445 ;
-move -r -0.0393114 0 0 ;
-rotate -r -os -fo 0 0 13.695712 ;
-scale -r 1 3.255642 1 ;
-move -r 0 -0.185119 0 ;
-move -r 0 0 -0.128901 ;
+
+
+// Create ears
+
+
+// Create eyes
+
+
+// Create whiskers
+
+
+// Create nose
