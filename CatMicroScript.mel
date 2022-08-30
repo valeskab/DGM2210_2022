@@ -11,22 +11,39 @@ scale -relative 2 1 1 ;
 polyCylinder -radius 1 -h 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -rcp 0 -createUVs 3 -constructionHistory 1 -name "Neck";
 move -relative 2.5 4 0 ;
 scale -relative 0.6 0.6 0.6 ;
-rotate -relative -ws -fo 6.82876 -4.222533 -27.491766 ;
+rotate -relative -ws -fo -0.458 -4.222533 -27.491766 ;
 
 // Create Head
-polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -cuv 2 -ch 1;
 move -relative 3 5 0 ;
-scale -r 1.186 1.186 1.186 ;
+scale -relative 1.186 1.186 1.186 ;
 
 // Create back legs
-polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -cuv 2 -ch 1;
 move -r -1.831 2.541 0.735 ;
 scale -r 1.017 1.017 0.666 ;
+
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+move -r -1.831 2.541 -0.735 ;
+scale -r 1.017 1.017 0.666 ;
+
+
 
 // Create front legs
 
 
 // Create ears
+polyCube -w 1 -h 1 -d 1 -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
+move -r 3.353344 5.927713 0.945593 ;
+rotate -r -os -fo 38.862174 0 0 ;
+scale -r 0.23962 1 1 ;
+select -r pCube1.f[1] ;
+scale -r -p 3.353344cm 6.317042cm 1.259318cm 1 1 0.667841 ;
+select -r pCube1.f[1] ;
+scale -r -p 3.353344cm 6.317042cm 1.259318cm 1 1 0.268564 ;
+select -r pCube1.e[10] ;
+move -r -0.355042 0 0 ;
+
 
 
 // Create eyes
