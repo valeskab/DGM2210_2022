@@ -1,0 +1,13 @@
+string $object [];
+$object = `polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+
+//[pSphere3, polySphere3]
+move -relative -4.898204 2.96805 3.169195 $object[0];
+
+float $radius = `polySphere -q -radius $object[0]`;
+print ($radius);
+
+polySphere -e -radius ($radius - 2.3) $object[0];
+
+//Don't forget backticks, everytime you're running a maya command and you want that data
+//you have to put backticks in the statement then you can assign to a variable to be used later

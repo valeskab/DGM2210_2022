@@ -1,0 +1,34 @@
+Operators
+
+-------Arithmetic--------
+
++ : Addition 3.5 + 5.2 => 8.7
+("Hello" + "World") => "Hello World"
+
+- : Subtraction 7.3 - 2.1 => 5.2
+
+* : Multiplication 3 * 5 => 15
+
+/ : Division  15 / 3 => 5
+
+++ : Increment
+               int $num = 13
+               $num++; //$num is now 14
+               (theyre the same)
+               $num = $num + 1
+-- : Decrement
+               int $num = 13;
+               $num --; //$num is now 12
+
+%  : Modulus   13 % 5 => 3
+               13 / 5 => 2
+
+^ : Power      3 ^ 5
+               3 * 3 * 3 * 3 * 3
+
+-----Assignment-----
+
+= : Assignment (from right to left)
+
+
+
