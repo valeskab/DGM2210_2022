@@ -29,6 +29,45 @@ Operators
 -----Assignment-----
 
 = : Assignment (from right to left)
+                int $num = 5
 
++= : Add value to variable and reassign to variable
+       int $num = 0
+       $num = $num + 10;
+       $num += 10;
+
+
+-= : Subtract value from variable and reassign to the variable
+
+*= : Multiply " "
+
+/= : Divide " "
+
+%= : Modulus " "
+
+^= : Power " "
+
+
+------Comparison------
+
+== : Equal to   3 == 5 (returs True or False : 1 or 0)
+
+!= : Not equal to 3 != 5
+
+>: Greater than 3 > 5 its gonna return false = 0
+<: Less than 3 < 5 its gonna return true = 1
+
+>=: Greater than equal to  3 >= 5
+
+<=: Less than equal to 3 <= 5
+
+-----Logical-----
+returns true or false: 1 or 0
+
+&&: And 
+
+|| : Or 
+
+! : Not
 
 
