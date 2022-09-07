@@ -1,0 +1,61 @@
+ //I decided to add onto the snowman for my challenge
+ //I've been trying my best to add what was taught in the lessons, however I do find this a quite challenging since math is my weakest subject.
+ //I work from 9pm to 1am, This will be my initial submission but I will try to polish this once I get back home.
+ 
+ // Snowman Base
+ 
+ float $size = 3;
+ 
+ polySphere -radius $size -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+ move -relative 0 $size 0 ;
+
+ polySphere -r ($size - 1) -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+ move -relative 0 (($size * 2) + ($size -1)) 0;
+
+ polySphere -r ($size - 2) -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+ move -relative 0 (($size * 2) + (($size -1)* 2) + ($size - 2)) 0;
+
+ // Hat
+
+ float $hat = 1.5;
+ float $hatheight = $hat / 3;
+
+ polyCylinder -r $hat -h $hatheight -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+
+ move -relative 0 12 0 ;
+
+select -r pCylinder1.f[40:59] ;
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -1.788139343e-07 -pvy 12.25 -pvz -2.384185791e-07 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 pCylinder1.f[40:59];
+
+scale -r -p -1.78814e-07cm 12.25cm -2.38419e-07cm 0.652407 0.652407 0.652407 ;
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -1.788139343e-07 -pvy 12.25 -pvz -2.384185791e-07 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 pCylinder1.f[40:59];
+ 
+setAttr "polyExtrudeFace2.localTranslate" -type double3 0 0 1.501561 ;
+
+ // Eyes
+
+ float $eyes = 0.1;
+
+polyCylinder -r $eyes -h $eyes -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r -0.4 11 0.9 ;
+rotate -r -os -fo 90 0 0 ;
+
+polyCylinder -r $eyes -h $eyes -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r 0.4 11 0.9 ;
+rotate -r -os -fo 90 0 0 ;
+
+ // Nose
+
+polyCone -r 0.2 -h 1 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r 0 11 1.4 ;
+rotate -r -os -fo 90 0 0 ;
+
+ // Arms
+
+polyCylinder -r 0.3 -h 3 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r -3 8 0 ;
+rotate -r -os -fo 0 0 -76 ;
+
+polyCylinder -r 0.3 -h 3 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r 3 8 0 ;
+rotate -r -os -fo 0 0 76 ;
