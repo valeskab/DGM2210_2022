@@ -1,0 +1,18 @@
+// Bee  Macro Script
+
+// Body
+float $size = 3;
+ 
+ polySphere -r $size -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+ move -r 0 $size 0 ;
+ scale -r ($size - 1.7) 1 1 ;
+
+// Eyes
+
+
+
+// Wings
+
+
+// Tail
+
