@@ -1,0 +1,41 @@
+
+for ($i = 1; $i < 101; ++$i)
+
+{
+    print ($i + "\n");
+}
+
+
+for ($i = 1; $i < 101; ++$i)
+
+{
+    if ($i % 2 == 0)
+    {
+        print ("EVEN: " + $i + : "\n");
+    }
+    else
+    {
+        print ("ODD: " + $i + "\n");
+    }
+}
+
+proc NumberCounter(int $min, int $max)
+{
+    for ($i = $min; $i <= $max; $i++)
+    {
+        if ($i % 2 == 0)
+        {
+            print ("EVEN: " + $i + : "\n");
+        }
+        else
+        {
+            print ("ODD: " + $i + "\n");
+        }
+    }
+}
+
+{
+    string $selection[];
+    $selection = `ls-sl`;
+    print ($selection);
+}
