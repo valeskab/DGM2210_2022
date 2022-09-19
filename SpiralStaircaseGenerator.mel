@@ -1,0 +1,21 @@
+// Spiral Staircase Generator!
+
+proc GenerateStairs(int $lenght, int $depth, int $height, int $width, int $rotation, int $spacing, int $centerPipeRadius)
+{
+    int $moveUpY = 0;
+    int $rotateY = 0;
+    //for loop for the Steps
+    for ($i = 0; $i < $lenght; ++$i)
+    {
+        string $stair[] = `polyCube -d $depth -h $height -w $width`;
+        xform -r -ro 0 $rotateY 0 $stair[0];
+        move -r -os -wd ($centerPipeRadius * 2) $moveUpY 0 $stair[0];
+        $moveUpY += $spacing;
+        $rotateY += $rotation;
+    }
+    //Center Column
+    string $centerPipe[] = `polyCylinder -r $centerPipeRadius -h ($lenght * $spacing)`;
+    move -r 0 (($lenght * $spacing) / 2) 0 $centerPipe[0];
+}
+//calls function
+GenerateStairs(30, 2, .5, 8, -15, 1, 2);
