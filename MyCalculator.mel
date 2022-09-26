@@ -1,0 +1,160 @@
+//Calculator sub-functions: Sum, Subtraction, Multiplication, Division, Power, Mean(average), Median.
+
+// Add
+global proc Sum (float $return[])
+
+{
+    float $remainder = 0;
+    int $size = size($return);
+    for ( $i = 0; $i < $size; ++$i )
+    {
+        print ($return[$i]);
+        $remainder += $return[$i];
+        if($i < ($size - 1))
+        {
+            print (" + ");
+        }
+    }
+
+    print (" = " + $remainder + "\n");
+}
+
+// Sub
+global proc Subtract (float $return[])
+
+{
+    float $remainder = 0;
+    int $size = size($return);
+    for ( $i = 0; $i < $size; ++$i )
+    {
+        print ($return[$i]);
+        $remainder -= $return[$i];
+        if($i < ($size - 1))
+        {
+            print (" - ");
+        }
+    }
+
+    print (" = " + $remainder + "\n");
+}
+
+// Mult
+global proc Multiply (float $return[])
+
+{
+    float $remainder = $return[0];
+    int $size = size($return);
+    print ($return[0] + " * ");
+    for ( $i = 0; $i < $size; ++$i )
+    {
+        print ($return[$i]);
+        $remainder *= $return[$i];
+        if($i < ($size - 1))
+        {
+            print (" * ");
+        }
+    }
+
+    print (" = " + $remainder + "\n");
+}
+
+// Div
+global proc Divide (float $return[])
+
+{
+    float $remainder = $return[0];
+    int $size = size($return);
+    print ($return[0] + " / ");
+    for ( $i = 0; $i < $size; ++$i )
+    {
+        print ($return[$i]);
+        $remainder /= $return[$i];
+        if($i < ($size - 1))
+        {
+            print (" / ");
+        }
+    }
+
+    print (" = " + $remainder + "\n");
+}
+
+//Pow
+global proc Power (float $return[])
+
+{
+    int $size = size($return);
+    if ($size < 3 )
+    {
+        float $powerOf = `pow $return[0] $return[1]`;
+        print ($return[0] + " to the power of " + $return[1] + " is " + $powerOf);
+    }
+}
+
+//Mean
+
+global proc Mean(float $return[])
+{
+    float $remainder = 0;
+    int $size = size($return);
+
+    for ($i = 0; $i < $size; $i++)
+    {
+        print ($return[$i]);
+        $remainder += $return[$i];
+        if($i < ($size - 1))
+        {
+            print (" + ");
+        }
+    }
+    float $mean = $remainder / $size;
+    print ("The mean is: " + $mean + "\n");
+}
+
+//Median
+//Tried doing it but I kept getting errors
+/*global proc Median(float $return[])
+{
+    float $sorted[] = `sort $return`;
+    int $size = size($return);
+
+*/
+//Calculator
+
+global proc MyCoolCalculator(float $input[] , int $operation)
+
+{
+    if ($operation == 1)
+    {
+        Sum($input);
+    }
+    else if ($operation == 2)
+    {
+        Subtract($input);
+    }
+    else if ($operation == 3)
+    {
+        Multiply($input);
+    }
+    else if ($operation == 4)
+    {
+        Divide($input);
+    }
+    else if ($operation == 5)
+    {
+        Power($input);
+    }
+    else if ($operation == 6)
+    {
+        Mean($input);
+    }
+    else if ($operation == 7)
+    {
+        Median($input);
+    }
+    else 
+    {
+        print ("Please input a valid operation type as a value from 1 - 7 (ex: 1 = addition)");
+    }
+}
+
+MyCoolCalculator({3, 5, 8}, 1);
