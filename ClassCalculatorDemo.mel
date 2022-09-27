@@ -32,7 +32,7 @@ global proc float Subtraction(float $numbers[])
 }
 
 
-global proc float Calculator(foat $input[], int $operation)
+global proc float Calculator(float $input[], int $operation)
 {
     float $result;
     string $operSymbol;
@@ -54,7 +54,7 @@ global proc float Calculator(foat $input[], int $operation)
     //print result
 
     string $sentence;
-    $sentence = "The result of";
+    $sentence = "The result of \n";
     $sentence += floatArrayToString($input, $operSymbol);
     $sentence += "=" + $result + "\n";
 
@@ -67,4 +67,4 @@ global proc float Calculator(foat $input[], int $operation)
 
 
 
-Calculator ({8,13,6}, 1)
+Calculator ({8,13,6}, 1);

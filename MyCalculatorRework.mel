@@ -1,0 +1,148 @@
+//Calculator sub-functions: Sum, Subtraction, Multiplication, Division, Power, Mean(average), Median.
+
+// Add
+global proc float Sum (float $numbers[])
+
+{
+    float $sum = $numbers[0];
+    for($i=0; $i<size($numbers); $i++)
+    {
+        $sum += $numbers[$i];
+    }
+
+    return $sum;
+}
+
+// Sub
+global proc float Subtract (float $numbers[])
+
+{
+    float $difference = $numbers[0];
+    for($i=1; $i<size($numbers); $i++)
+    {
+        $difference -= $numbers[$i];
+    }
+
+    return $difference;
+}
+
+// Mult
+global proc float Multiply (float $numbers[])
+
+{
+    float $product = $numbers[0];
+    for($i=1; $i<size($numbers); $i++)
+    {
+        $product *= $numbers[$i];
+    }
+
+    return $product;
+}
+
+// Div
+global proc float Divide (float $numbers[])
+
+{
+    float $quotient = $numbers[0];
+    for ( $i = 1; $i<size($numbers); $i++ )
+    {
+        $quotient /= $numbers[$i];
+    }
+
+    return $quotient;
+}
+
+//Pow
+global proc float Power (float $numbers[])
+
+{
+    float $powerOf = `pow $numbers[0] $numbers[1]`;
+
+    return $powerOf;
+}
+
+//Mean
+
+/*global proc float Mean(float $numbers[])
+{
+    float $mean = $numbers[0];
+    for ( $i = 1; $i<size($numbers); $i++ )
+    {
+        $mean += $numbers[$i];
+    }
+    float $mean = $sum / $numbers;
+    return $mean
+}
+
+//Median
+//Tried doing it but I kept getting errors
+/*global proc float Median(float $numbers[])
+{
+    float $sorted[] = `sort $numbers`;
+    int $size = size($numbers);
+
+*/
+//Calculator
+
+global proc float Calculator(float $input[], int $operation)
+{
+    float $result;
+    string $operSymbol;
+
+    // perform addition
+    if($operation == 1)
+    {
+        $result = Addition($input);
+        $operSymbol = "+";
+    }
+    // perform subtraction
+    else if ($operation == 2)
+    {
+        $result = Subtraction($input);
+        $operSymbol = "-";
+    }
+
+    else if ($operation == 3)
+    {
+        $result = Multiplication($input);
+        $operSymbol = "*";
+    }
+    else if ($operation == 4)
+    {
+        $result = Division($input);
+        $operSymbol = "/";
+    }
+    else if ($operation == 5)
+    {
+        $result = Power($input);
+        $operSymbol = "to the power of";
+    }
+    else if ($operation == 6)
+    {
+        $result = Mean($input);
+        $operSymbol = "the mean is";
+    }
+    else if ($operation == 7)
+    {
+        $result = Median($input);
+        $operSymbol = "the median is ";
+    }
+
+
+    //print result
+
+    string $sentence;
+    $sentence = "The result of \n";
+    $sentence += floatArrayToString($input, $operSymbol);
+    $sentence += "=" + $result + "\n";
+
+
+    print($sentence);
+
+    return ($result);
+
+}
+
+
+
+Calculator ({8,13,6}, 1);
