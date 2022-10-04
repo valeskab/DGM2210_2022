@@ -1,2 +1,44 @@
 //Fortune Teller
+// -Lottery Number
+// -Bestest Friend
+// -Fortune
+// -Zodiac Sign
 
+
+// generate random lottery numbers
+
+proc string LotteryNumbers()
+
+{
+    int $values[];
+    for ($i=0; $i < 7; $i++)
+    {
+        int $num = `rand 100`;
+        $values[size($values)] = $num;
+    }
+    return (int ArrayToString($values, "-"));
+}
+
+proc BestestFriend()
+{
+    string $names[] = {"Dave", "Doug", "Clarence", "Mary", "Jane", "Tina", "Phil"};
+    int $size = size($names);
+    int $randNum = `rand $size`;
+    print ("Your new bestest friend will be named " + $names[$randNum] + "!\n");
+}
+
+proc FortuneCookie()
+{
+    string $fortunes[] = {"What ever you're goal is in life, embrace it visualize it, and for it will be yours.",
+                            "Your ability for accomplishment will follow with success.", 
+                            "If winter comes, can spring be far behind?",
+                            "There is no greater pleasure than seeing your loved ones prosper.", 
+                            "Meeting adversity well is the source of your strength."};
+    int $randNum = `rand (size($fortunes))`;
+    print ($fortunes[$randNum]);
+}
+
+proc Zodiac(int $birthYear)
+{
+    string $signs[] = {"Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Sheep", "Monkey", "Rooster", "Dog", "Pig"};
+}

@@ -1,0 +1,19 @@
+window;
+    columnLayout;
+        button;
+        button;
+        intField;
+        rowLayout; -numberOfColumns 3;
+            button;
+            columnLayout;
+                button;
+                button;
+                setParent ..; //reset where the parent is |; (this will set to window level)
+                button;
+
+showWindow;
+
+/*Takeaway of lesson: Make sure you pay attention to the structure if your UI. 
+When you build layouts make sure to understand your window. that they become the targeted parent
+any controls you build after will be set at the child of that layout automatically
+*/
