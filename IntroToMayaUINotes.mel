@@ -17,3 +17,19 @@ showWindow;
 When you build layouts make sure to understand your window. that they become the targeted parent
 any controls you build after will be set at the child of that layout automatically
 */
+
+//UI Structure vid
+string $mWindow = `window`;
+string $mColumn = `columnLayout`;
+button -p $mColumn;
+button -p $mColumn;
+intField -p $mColumn;
+string $mRow = `rowLayout; -numberOfColumns 3`;
+button -p $mRow;
+columnLayout -p $mRow;
+button;
+button;
+setParent ..; 
+button;
+
+showWindow;
