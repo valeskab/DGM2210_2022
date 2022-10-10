@@ -1,0 +1,286 @@
+//This is the calculator UI
+
+// Add
+global proc float Sum (float $numbers[])
+
+{
+    float $sum = $numbers[0];
+    for($i=0; $i<size($numbers); $i++)
+    {
+        $sum += $numbers[$i];
+    }
+
+    return $sum;
+}
+
+// Sub
+global proc float Subtract (float $numbers[])
+
+{
+    float $difference = $numbers[0];
+    for($i=1; $i<size($numbers); $i++)
+    {
+        $difference -= $numbers[$i];
+    }
+
+    return $difference;
+}
+
+// Mult
+global proc float Multiply (float $numbers[])
+
+{
+    float $product = $numbers[0];
+    for($i=1; $i<size($numbers); $i++)
+    {
+        $product *= $numbers[$i];
+    }
+
+    return $product;
+}
+
+// Div
+global proc float Divide (float $numbers[])
+
+{
+    float $quotient = $numbers[0];
+    for ( $i = 1; $i<size($numbers); $i++ )
+    {
+        $quotient /= $numbers[$i];
+    }
+
+    return $quotient;
+}
+
+//Pow
+global proc float Power (float $numbers[])
+
+{
+    float $powerOf = `pow $numbers[0] $numbers[1]`;
+
+    return $powerOf;
+}
+
+//Mean
+
+global proc float Mean(float $numbers[])
+{
+    float $mean = $numbers[0];
+    for ( $i = 1; $i<size($numbers); $i++ )
+    {
+        $mean += $numbers[$i];
+    }
+    return $mean / size($numbers);
+}
+
+//Median
+global proc float Median(float $numbers[])
+{
+    $highest = $numbers[0];
+    for ( $i = 1; $i<size($numbers); $i++ )
+    {
+        if ($numbers[$i] > $highest)
+        {
+            $highest = $numbers[$i];
+        }
+    }
+
+    $lowest = $numbers[0];
+    for ( $i = 1; $i<size($numbers); $i++ )
+    {
+        if ($numbers[$i] < $lowest)
+        {
+            $lowest = $numbers[$i];
+        }
+    }
+    return ($highest + $lowest) / 2;
+
+}
+
+//Calculator
+global proc string Calculator(float $input[], int $operation)
+{
+    //addition
+    if($operation ==1)
+    {
+        return (floatArrayToString($input, " + ") + (" = " + Addition($input) + "\n"));
+    }
+
+    else if ($operation ==2)
+    {
+
+        return  (floatArrayToString($input, " - ") + (" = " + Subtraction($input) + "\n"));
+    }
+
+    else if ($operation ==3)
+    {
+        return (floatArrayToString($input, " * ") + (" = " + Multiplication($input) + "\n"));
+    }
+
+    else if ($operation ==4)
+    {
+            return (floatArrayToString($input, " / ") + (" = " + Divide($input) + "\n"));
+            
+    }
+
+    else if ($operation ==5)
+    {
+        if(size($input)==2)
+        {
+            return ($input[0] + " ^ " + $input[1] + " = " + Power($input) + "\n");
+        }
+        else
+        {
+            return("Input a variable and an exponent \n");
+        }
+    }
+
+    else if ($operation ==6)
+    {
+        return (("The average of ") + floatArrayToString($input, " , ") + " is " + Mean($input));
+    }
+
+    else if ($operation ==7)
+    {
+        return (("The mode of ") + floatArrayToString($input, " , ") + " is " + Median($input));
+    }
+
+    else
+    {
+        return ("Input valid numbers and an operation");
+    }
+}
+
+
+global proc AdditionButton()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $answerField = `optionVar -q "calcResult"`;
+
+    float $indexOne = `floatField -q -value $firstField`;
+    float $indexTwo = `floatField -q -value $secondField`;
+
+
+    string $result = Calculator({$indexOne, $indexTwo}, 1);
+    textField -e -text $result $answerField;
+
+}
+
+global proc SubtractButton()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $answerField = `optionVar -q "calcResult"`;
+
+    float $indexOne = `floatField -q -value $firstField`;
+    float $indexTwo = `floatField -q -value $secondField`;
+
+
+    string $result = Calculator({$indexOne, $indexTwo}, 2);
+    textField -e -text $result $answerField;
+}
+
+global proc MultiplyButton()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $answerField = `optionVar -q "calcResult"`;
+
+    float $indexOne = `floatField -q -value $firstField`;
+    float $indexTwo = `floatField -q -value $secondField`;
+
+
+    string $result = Calculator({$indexOne, $indexTwo}, 3);
+    textField -e -text $result $answerField;
+}
+
+global proc DivideButton()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $answerField = `optionVar -q "calcResult"`;
+
+    float $indexOne = `floatField -q -value $firstField`;
+    float $indexTwo = `floatField -q -value $secondField`;
+
+
+    string $result = Calculator({$indexOne, $indexTwo}, 4);
+    textField -e -text $result $answerField;
+}
+
+global proc PowerButton()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $answerField = `optionVar -q "calcResult"`;
+
+    float $indexOne = `floatField -q -value $firstField`;
+    float $indexTwo = `floatField -q -value $secondField`;
+
+
+    string $result = Calculator({$indexOne, $indexTwo}, 5);
+    textField -e -text $result $answerField;
+}
+
+global proc AverageButton()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $answerField = `optionVar -q "calcResult"`;
+
+    float $indexOne = `floatField -q -value $firstField`;
+    float $indexTwo = `floatField -q -value $secondField`;
+
+
+    string $result = Calculator({$indexOne, $indexTwo}, 6);
+    textField -e -text $result $answerField;
+}
+
+global proc MeanButton()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $answerField = `optionVar -q "calcResult"`;
+
+    float $indexOne = `floatField -q -value $firstField`;
+    float $indexTwo = `floatField -q -value $secondField`;
+
+
+    string $result = Calculator({$indexOne, $indexTwo}, 7);
+    textField -e -text $result $answerField;
+}
+
+
+global proc CalculatorUI()
+{
+    string $mWindow = "calcWindow";
+
+    if (`window -exists $mWindow`)
+        deleteUI $mWindow;
+
+    $mWindow =  `window -title "Calculator"
+                        -widthHeight 300 200
+                        -resizeToFitChildren 1
+                        $mWindow`;
+    
+    $mColumn = `columnLayout -parent $mWindow -adjustableColumn 1`;
+
+    $digitLayout = `columnLayout -parent $mWindow`;
+    optionVar -stringValue "firstField" `floatField -parent $mColumn`;
+    optionVar -stringValue "secondField" `floatField -parent $mColumn`;
+
+    $operationLayout = `gridLayout -numberOfColumns 7 -parent $mWindow`;
+    optionVar -stringValue "operationButtons" `radioCollection -parent $operationLayout`;
+    optionVar -stringValue "plusButton" `button -label "+" -command "AddButton"`;
+    optionVar -stringValue "minButton" `button -label "-" -command "SubtractButton"` ;
+    optionVar -stringValue "multButton" `button -label "*" -command "MultiplyButton"`;
+    optionVar -stringValue "divButton" `button -label "/" -command "DivideButton"`;
+    optionVar -stringValue "powButton" `button -label "^" -command "PowerButton"`;
+    optionVar -stringValue "aveButton" `button -label "Avrg" -command "AverageButton"`;
+    optionVar -stringValue "meanButton" `button -label "Mean" -command "MeanButton"`;
+    optionVar -stringValue "calcResult" `textField -parent $mColumn -editable 0`;
+    showWindow $mWindow;
+}
+
+CalculatorUI();

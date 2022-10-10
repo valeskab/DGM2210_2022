@@ -38,7 +38,83 @@ proc FortuneCookie()
     print ($fortunes[$randNum]);
 }
 
-proc Zodiac(int $birthYear)
+global proc string Zodiac(int $birthYear)
 {
-    string $signs[] = {"Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Sheep", "Monkey", "Rooster", "Dog", "Pig"};
+    string $signs[] = {"rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "sheep", "monkey", "rooster", "dog", "pig"};
+    int $index = ($birthYear - 4) % 4;
+
+    return $signs[$index];
 }
+
+print (Zodiac(1917));
+
+global proc string FortuneTeller(string $myName, int $myBirthYear, int $operation)
+{
+    if($operation == 1)
+    {
+        return ("Your lucky numbers for today are: " + LotteryNumbers());
+
+    }
+    else if ($operation ==2)
+    {
+        return (BestestFriend($myName));
+    }
+    else if ($operation ==3)
+    {
+        return (FortuneCookie());
+    }
+
+    else if ($operation ==4)
+    {
+        return ("Based on your birth year, " + $myBirthYear + ", your zodiac sign is " + Zodiac($myBirthYear));
+        Zodiac($myBirthYear);
+    }
+
+    else
+    {
+        print ("Please input a valid operation type as a value, 1 through 4.\n");
+    }
+
+}
+
+//FortuneTeller("Melissa", 1998, 4);
+
+global proc FT_ButtonCmd()
+{
+    string $nameField = `optionVar -q "ftNameField"`;
+    string $yearField = `optionVar -q "ftYearField"`;
+    string $operField = `optionVar -q "ftOperation"`;
+    string $resultField = `optionVar -q "ftResult"`;
+
+
+    string $name = `textField -q -text  $nameField`;
+    string $year = `intField -q -value $yearField`;
+    string $oper = `radioButtonGrp -q -select $operField`;
+
+    string $result = FortuneTeller($name, $year, $oper);
+    textField -e -text  $result $resultField;
+}
+
+
+global proc FortuneUI()
+{
+    string $mWindow = "ftWindow";
+
+    if (`window -exists $mWindow`)
+        deleteUI $mWindow;
+
+    $mWindow = `window  -title "FortuneTeller" 
+                        -widthHeight 300 400
+                        -resizeToFitChildren 1
+                        $mWindow`;
+    $mColumn = `columnLayout -parent $mWindow -adjustableColumn 1`;
+    optionVar -stringValue "ftNameField" `textField -parent $mColumn -placeholderText "Enter name here..."`;
+    optionVar -stringValue "ftYearField" `intField -parent $mColumn`;
+    optionVar -stringValue "ftOperation" `radioButtonGrp -parent $mColumn -numberOfRadioButtons 4 -labelArray4 "LuckyNumbers" "BestestFriend" "FortuneCookie" "Zodiac Sign"`;
+    button -parent $mColumn -label "Go!" -command "FT_ButtonCmd";
+    optionVar -stringValue "ftResult" `textField -parent $mColumn -editable 0`;
+
+    showWindow $mWindow;
+}
+
+FortuneUI();

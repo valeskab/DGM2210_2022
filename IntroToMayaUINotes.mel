@@ -1,3 +1,5 @@
+//Intro to Maya UI vid
+
 window;
     columnLayout;
         button;
@@ -23,13 +25,87 @@ string $mWindow = `window`;
 string $mColumn = `columnLayout`;
 button -p $mColumn;
 button -p $mColumn;
-intField -p $mColumn;
+string $ageField = `intField -p $mColumn`;
 string $mRow = `rowLayout; -numberOfColumns 3`;
 button -p $mRow;
-columnLayout -p $mRow;
-button;
-button;
-setParent ..; 
-button;
+string $rColumn = `columnLayout -p $mRow`;
+button -p $rColumn;
+button -p $mRow;
+button -p $mColumn;
+button -p $rColumn;
 
-showWindow;
+showWindow $mWindow;
+
+//UI Parameters Vid
+
+//for this to work, the function must already be defined (run first)
+global proc Add()
+{
+    float $sum = 3.5 + 5.3;
+    print ("The sum is " + $sum);
+}
+
+string $mWindow = `window -height 300 
+                            -title "Super Cool Window"
+                            -sizeable 1
+                            -with 400
+                            "my_tools_ui"`;
+string $mColumn = `columnLayout -adjustableColumn 1
+                                -parent $mWindow`;
+button -parent $mColumn -label "Say Hello!" -comand "print (\"Hello World\")"; //  substitute with quotation mark inside of the string
+button -parent $mColumn -label "Add Numbers" -comand Add;
+showWindow $mWindow;
+
+//Deleting Interfaces Vid and Accessing Control Values and OptionVars vid
+
+global proc Add()
+{
+    string $field1 = `optionVar -q "firstField"`;
+    string $field2 = `optionVar -q "secondField"`;
+    string $field3 = `optionVar -q "thirdField"`;
+    string $field4 = `optionVar -q "myTextField"`;
+
+
+    float $value1 = `floatField -q -value $field1`;
+    float $value2 = `floatField -q -value $field2`;
+
+    float $sum = $value1 + $value2;
+
+    floatField -e -value $sum $field3;
+    textField -e -text ("The sum of " + $value1 + " and " + $value2 + " is " + $sum + ".") $field4;
+}
+
+global proc WhatsInFloatField()
+{
+    string $field1 = `optionVar -q "firstField"`;
+    print ($field1 + "\n");
+
+    print (`floatField -q -value $field1`);
+
+}
+
+
+string $mWindow = "test_ui";
+
+if (`window -exists $mWindow`)
+    deleteUI $mWindow;
+
+
+$mWindow = `window -height 300 
+                    -title "Super Cool Window"
+                    -sizeable 1
+                    -width 400
+                    $mWindow`;
+string $mColumn = `columnLayout -adjustableColumn 1
+                                -parent $mWindow`;
+button -parent $mColumn -label "Say Hello!" -command "print (\"Hello World\")"; //  substitute with quotation mark inside of the string
+
+
+optionVar -stringValue "firstField" `floatField`;
+optionVar -stringValue "secondField" `floatField`;
+optionVar -stringValue "thirdField" `floatField -editable 0`;
+optionVar -stringValue "myTextField" `textField -editable 0`;
+
+button -parent $mColumn -label "Print Field Value" -command WhatsInFloatField;
+button -parent $mColumn -label "Add Numbers" -command Add;
+showWindow $mWindow;
