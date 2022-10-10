@@ -142,7 +142,7 @@ global proc string Calculator(float $input[], int $operation)
 
     else if ($operation ==7)
     {
-        return (("The mode of ") + floatArrayToString($input, " , ") + " is " + Median($input));
+        return (("The mean of ") + floatArrayToString($input, " , ") + " is " + Median($input));
     }
 
     else
