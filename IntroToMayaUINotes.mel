@@ -109,3 +109,57 @@ optionVar -stringValue "myTextField" `textField -editable 0`;
 button -parent $mColumn -label "Print Field Value" -command WhatsInFloatField;
 button -parent $mColumn -label "Add Numbers" -command Add;
 showWindow $mWindow;
+
+
+
+
+
+
+
+
+global proc btnCmd()
+{
+    string $rCollection = `optionVar -q "myCollection"`;
+    string $rBtn = `radioCollection -q -select $rCollection`;
+    print (`radioButton -q -data $rBtn`);
+}
+
+
+
+global proc MyUI()
+{
+    string $mWindow = "myUI";
+
+    if (`window -exists $mWindow`)
+            deleteUI $mWindow;
+
+
+    $mWindow = `window -widthHeight 300 400
+                        -title "Super Cool Window"
+                        -resizeToFitChildren 1
+                        $mWindow`;
+    string $mColumn = `columnLayout -adjustableColumn 1
+                                        -parent $mWindow`;
+    //button -parent $mColumn -label "Say Hello!" -command "print (\"Hello World\")"; //  substitute with quotation mark inside of the string
+
+
+    //optionVar -stringValue "firstField" `floatField`;
+    //optionVar -stringValue "secondField" `floatField`;
+    //optionVar -stringValue "thirdField" `floatField -editable 0`;
+    //optionVar -stringValue "myTextField" `textField -editable 0`;
+
+    string $rcollection =  `radioCollection -parent $mColumn`;
+    optionVar -stringvalue "myCollection" $rCollection;
+    radioButton -parent $mColumn -collection $rCollection -label "Add";
+    radioButton -parent $mColumn -collection $rCollection -label "Subtract";
+    radioButton -parent $mColumn -collection $rCollection -label "Multiply";
+    radioButton -parent $mColumn -collection $rCollection -data 14;
+
+    button -parent $mColumn -command "btnCmd";
+
+
+
+
+
+    showWindow $mWindow;
+}

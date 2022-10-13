@@ -1,0 +1,77 @@
+global proc RandomPlaceGen()
+{
+    string $duplicateField = `optionVar -q "numberOfDuplicates"`;
+    string $xminField = `optionVar -q "xMinimum"`;
+    string $xmaxField = `optionVar -q "xMaximum"`;
+    string $yminField = `optionVar -q "yMinimum"`;
+    string $ymaxField = `optionVar -q "yMaximum"`;
+    string $zminField = `optionVar -q "zMinimum"`;
+    string $zmaxField = `optionVar -q "zMaximum"`;
+
+    float $minX = `floatField -q -value $xminField`;
+    float $maxX = `floatField -q -value $xmaxField`;
+    float $minY = `floatField -q -value $yminField`;
+    float $maxY = `floatField -q -value $ymaxField`;
+    float $minZ = `floatField -q -value $zminField`;
+    float $maxZ = `floatField -q -value $zmaxField`;
+
+    int $duplicate = `intField -q -value $duplicateField`;
+    
+    for ($i = 1; $i <= $duplicate; $i++)
+    {
+        $randomX = rand ($minX, $maxX);
+        $randomY = rand ($minY, $maxY);
+        $randomZ = rand ($minZ, $maxZ);
+
+        duplicate;
+        move -absolute $randomX $randomY $randomZ;
+    }
+}
+
+global proc RandomPlaceGenUI()
+{
+    string $mWindow = "dupeWindow";
+
+    if (`window -exists $mWindow`)
+        deleteUI $mWindow;
+
+    $mWindow =  `window -title "Random Placement Generator"
+                        -widthHeight 300 400
+                        -resizeToFitChildren 1
+                        $mWindow`;
+    $mColumn = `columnLayout -parent $mWindow -adjustableColumn 1`;
+
+
+    $xRow = `rowLayout -parent $mWindow -adjustableColumn 4 -numberOfColumns 4`;
+    text -label "X min";
+    optionVar -stringValue "xMinimum" `floatField -parent $xRow`;
+    text -label "X max";
+    optionVar -stringValue "xMaximum" `floatField -parent $xRow`;
+
+    $yRow = `rowLayout -parent $mWindow -adjustableColumn 4 -numberOfColumns 4`;
+    text -label "Y min";
+    optionVar -stringValue "yMinimum" `floatField -parent $yRow`;
+    text -label "Y max";
+    optionVar -stringValue "yMaximum" `floatField -parent $yRow`;
+
+    $zRow = `rowLayout -parent $mWindow -adjustableColumn 4 -numberOfColumns 4`;
+    text -label "Z min";
+    optionVar -stringValue "zMinimum" `floatField -parent $zRow`;
+    text -label "Z max";
+    optionVar -stringValue "zMaximum" `floatField -parent $zRow`;
+
+
+    $duplicateRow = `rowLayout -parent $mWindow -adjustableColumn 2 -numberOfColumns 2`;
+    text -label "Number Of Duplicates";
+    optionVar -stringValue "numberOfDuplicates" `intField -parent $duplicateRow`;
+    button -parent $mColumn -label "Randomize" -command "RandomPlaceGen";
+
+    showWindow $mWindow;
+}
+
+
+RandomPlaceGenUI();
+
+//Enter XYZ max and min Values for desired result
+//Enter the number of duplicates desired
+//Select object and press the Randomize button, Object will be duplicated + randomized!
