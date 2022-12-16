@@ -11,19 +11,16 @@ def SequentialRenamer(txt):
         if count > 0:
             nums = ("#" * count)
             x = txt.partition(nums)
-
             prefix = x[0]
             suffix = x[2]
-
             i = 1
+            
             for sel in sels:
                 num = str(i).zfill(count)
                 cmds.select(sel)
                 cmds.rename(prefix + num + suffix)
                 i += 1
-
         else:
-
             cmds.error("String doesn't contain '#'. try again.")
     else:
         cmds.error("No objects were selected, please select an object.")
