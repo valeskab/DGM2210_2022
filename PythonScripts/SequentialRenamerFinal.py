@@ -14,7 +14,7 @@ def SequentialRenamer(txt):
             prefix = x[0]
             suffix = x[2]
             i = 1
-            
+
             for sel in sels:
                 num = str(i).zfill(count)
                 cmds.select(sel)
